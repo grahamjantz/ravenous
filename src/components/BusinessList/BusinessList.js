@@ -1,16 +1,23 @@
 import React from 'react';
 import './BusinessList.css';
+
 import Business from '../Business/Business';
 
-const BusinessList = ({ businesses }) => {
+class BusinessList extends React.Component {
 
-  return (
-    <div className="BusinessList">
-        {businesses.map((business) => {
-            return <Business key={Math.floor(Math.random() * 10000)} business={business}/>
-        })}
-    </div>
-  )
+  render() {
+    if (this.props.business) {
+      return (
+        <div className="BusinessList">
+          {
+            this.props.businesses.map(business => {
+              return <Business key={this.props.business.id} business={business} />
+            })
+          }
+        </div>
+      );
+    }
+  }
 }
 
-export default BusinessList
+export default BusinessList;
